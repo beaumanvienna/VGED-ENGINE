@@ -13,7 +13,7 @@ namespace VGED {
             };
 
             struct ShaderCode {
-                std::string string;
+                std::string code;
             };
 
             struct ShaderSPIRV {
@@ -25,6 +25,7 @@ namespace VGED {
 
             struct ShaderInfo {
                 ShaderSource source;
+                ShaderType type;
                 std::string entry_point = {"main"};
             };
 
@@ -69,7 +70,7 @@ namespace VGED {
                 RasterizationPipeline(const RasterizationPipelineInfo& info);
                 ~RasterizationPipeline();
             private:
-                
+                std::vector<u32> get_spirv(const ShaderInfo& info);
             };
         }
     }
